@@ -15,8 +15,8 @@ PIO + ESP-IDF + LVGL for M5Stack Dial
 
 2. In the PlatformIO extension hit Build, Upload & Monitor.
 
-> [!NOTE]
-> PlatformIO can't compile with ESP-IDF projects where the current workspace path contains spaces. Each example therefore overrides `build_dir` to land under `~/.platformio/pio-build/`: tweak that path to match your username, or drop the override entirely if your workspace has no spaces. Keeping `.pio` outside the repo saves a huge cache, avoids CMake generators touching paths with spaces, and sync issues if your repo is on e.g. OneDrive.
+> [!IMPORTANT]
+> ESP-IDF builds break if the workspace path includes spaces or sits inside OneDrive (or similar sync folders). Keep this repo in a plain path without spaces and outside cloud-sync directories. I tried setting build-path outside the project root and couldn't get it to work.
 
 ## Screenshots of examples
 

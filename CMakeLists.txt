@@ -1,9 +1,0 @@
-set(COMPONENT_ADD_INCLUDEDIRS src)
-file(GLOB SRCS src/*.cpp)
-set(COMPONENT_SRCS ${SRCS})
-
-set(COMPONENT_REQUIRES M5Unified lvgl)
-
-register_component()
-idf_build_set_property(COMPILE_DEFINITIONS LV_LVGL_H_INCLUDE_SIMPLE LV_CONF_INCLUDE_SIMPLE APPEND)
-idf_build_set_property(INCLUDE_DIRECTORIES "${COMPONENT_DIR}/include" APPEND)

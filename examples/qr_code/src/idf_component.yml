@@ -1,3 +1,4 @@
 dependencies:
-  mzyy94/M5Dial-LVGL:
-    path: ../../../../M5Dial-LVGL
+  m5dial_lvgl:
+    path: ../../../components/m5dial_lvgl
+    override_path: ../../../components/m5dial_lvgl

@@ -3,16 +3,22 @@
 PIO + ESP-IDF + LVGL for M5Stack Dial
 
 ## Uses
-- PlatformIO
-- ESP-IDF **v5.1.2**.
+- PlatformIO release: **espressif32@6.5.0**
+- Bundled ESP-IDF Framework **5.1.2**
 - LVGL: **9.x**. Earlier LVGL versions are incompatible.
 
-## Usage
+## Run examples
 
-Call `m5dial_lvgl_init()` first, `m5dial_lvgl_next()` in a loop.
-Please refer to examples for more details.
+1. Use the PlatformIO project switcher in the VS Code (bottom) status bar to pick an example in the top command bar (`hello_world`, `touch_button`, `dial_number`, `qr_code`, `new_font`, `native-sdl`).
 
-## Examples
+![PlatformIO project switcher](docs/assets/ProjectSwitcher.png)
+
+2. In the PlatformIO extension hit Build, Upload & Monitor.
+
+> [!NOTE]
+> PlatformIO can't compile with ESP-IDF projects where the current workspace path contains spaces. Each example therefore overrides `build_dir` to land under `~/.platformio/pio-build/`: tweak that path to match your username, or drop the override entirely if your workspace has no spaces. Keeping `.pio` outside the repo saves a huge cache, avoids CMake generators touching paths with spaces, and sync issues if your repo is on e.g. OneDrive.
+
+## Screenshots of examples
 
 | [hello_world]| [touch_button]| [dial_number]|
 |:------------:|:-------------:|:------------:|
@@ -41,6 +47,10 @@ Please refer to examples for more details.
 ## Hardware
 
 - Confirm SPI MOSI/MISO/SCLK, CS, DC, RST, BL and touch pins match your board. Update driver files if needed.
+
+## Usage beyond examples
+
+Call `m5dial_lvgl_init()` first, `m5dial_lvgl_next()` in a loop.
 
 ## License
 

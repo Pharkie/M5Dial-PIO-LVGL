@@ -29,33 +29,25 @@ Encoder::~Encoder()
 
 void Encoder::setup(gpio_num_t pin_a, gpio_num_t pin_b)
 {
-    pcnt_unit_config_t unit_config = {
-        .low_limit = PCNT_LOW_LIMIT,
-        .high_limit = PCNT_HIGH_LIMIT,
-        .intr_priority = 1,
-        .flags = {
-            .accum_count = 1,
-        },
-    };
+    pcnt_unit_config_t unit_config = {};
+    unit_config.low_limit = PCNT_LOW_LIMIT;
+    unit_config.high_limit = PCNT_HIGH_LIMIT;
+    unit_config.intr_priority = 1;
+    unit_config.flags.accum_count = 1;
     ESP_ERROR_CHECK(pcnt_new_unit(&unit_config, &_pcnt_unit));
 
-    const pcnt_glitch_filter_config_t filter_config = {
-        .max_glitch_ns = 1000,
-    };
+    pcnt_glitch_filter_config_t filter_config = {};
+    filter_config.max_glitch_ns = 1000;
     ESP_ERROR_CHECK(pcnt_unit_set_glitch_filter(_pcnt_unit, &filter_config));
 
-    const pcnt_chan_config_t chan_a_config = {
-        .edge_gpio_num = pin_a,
-        .level_gpio_num = pin_b,
-        .flags = 0,
-    };
+    pcnt_chan_config_t chan_a_config = {};
+    chan_a_config.edge_gpio_num = pin_a;
+    chan_a_config.level_gpio_num = pin_b;
     ESP_ERROR_CHECK(pcnt_new_channel(_pcnt_unit, &chan_a_config, &_pcnt_chan_a));
 
-    const pcnt_chan_config_t chan_b_config = {
-        .edge_gpio_num = pin_b,
-        .level_gpio_num = pin_a,
-        .flags = 0,
-    };
+    pcnt_chan_config_t chan_b_config = {};
+    chan_b_config.edge_gpio_num = pin_b;
+    chan_b_config.level_gpio_num = pin_a;
     ESP_ERROR_CHECK(pcnt_new_channel(_pcnt_unit, &chan_b_config, &_pcnt_chan_b));
 
     ESP_ERROR_CHECK(pcnt_channel_set_edge_action(_pcnt_chan_a, PCNT_CHANNEL_EDGE_ACTION_DECREASE, PCNT_CHANNEL_EDGE_ACTION_HOLD));

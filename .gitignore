@@ -13,3 +13,4 @@ examples/**/dependencies.lock
 build
 !examples/dial_number/**/CMakeLists.txt
 !examples/qr_code/**/CMakeLists.txt
+.DS_Store

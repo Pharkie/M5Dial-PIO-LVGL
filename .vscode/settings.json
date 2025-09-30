@@ -1,7 +1,0 @@
-{
-  // Use compile_commands to fix include paths for IntelliSense
-  "C_Cpp.default.compileCommands": "${workspaceFolder}/examples/hello_world/compile_commands.json",
-  // Keep noise low but visible if something's off
-  "C_Cpp.loggingLevel": "Warning"
-}
-
